@@ -1,31 +1,16 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
-import { ClientProxy } from '@nestjs/microservices';
+import { RegisterDto } from './dtos/requests';
 
 @Controller('user')
 export class UserController {
-  constructor(
-    @Inject('USER_MICROSERVICE') private readonly userClient: ClientProxy,
-    private readonly userService: UserService,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   @Post('register')
   registerUser(
     @Body()
-    userData: {
-      name: string;
-      email: string;
-      password: string;
-      phone: string;
-    },
+    dto: RegisterDto,
   ) {
-    const name = userData.name;
-    const email = userData.email;
-    const password = userData.password;
-    const phone = userData.phone;
-    return this.userClient.send(
-      { role: 'user', cmd: 'register' },
-      { name, email, password, phone },
-    );
+    return this.userService.create(dto);
   }
 }
