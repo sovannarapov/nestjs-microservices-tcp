@@ -1,34 +1,22 @@
 services:
   db:
     image: postgres:13-alpine
-    container_name: microservice_postgres
+    container_name: user-service-db
     environment:
       POSTGRES_DB: nestdb
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      PGDATA: /data/postgres
+      PGDATA: /var/lib/postgresql/data
     volumes:
-      - db:/data/postgres
+      - db-data:/var/lib/postgresql/data
     ports:
       - '5434:5432'
     networks:
       - db
     restart: unless-stopped
 
-#  app:
-#    container_name: app
-#    build: .
-#    ports:
-#      - 9090:8080
-#    networks:
-#      - app-network
-#    depends_on:
-#      - db
-#    restart: unless-stopped
-
 networks:
   db:
-    driver: bridge
 
 volumes:
-  db:
+  db-data:
