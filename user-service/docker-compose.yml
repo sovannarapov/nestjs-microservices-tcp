@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: user-service-db
+    environment:
+      POSTGRES_DB: nestdb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - '5434:5432'
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+
+volumes:
+  db-data:
