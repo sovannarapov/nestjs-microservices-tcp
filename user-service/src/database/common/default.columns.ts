@@ -1,6 +1,6 @@
 import { DataType } from './constant';
 
-export default [
+const TimestampColumns = [
   {
     name: 'created_at',
     type: DataType.DateTime,
@@ -14,3 +14,14 @@ export default [
     default: 'CURRENT_TIMESTAMP',
   },
 ];
+
+const TimestampSoftDeleteColumns = [
+  ...TimestampColumns,
+  {
+    name: 'deleted_at',
+    type: DataType.DateTime,
+    isNullable: true,
+  },
+];
+
+export { TimestampColumns, TimestampSoftDeleteColumns };

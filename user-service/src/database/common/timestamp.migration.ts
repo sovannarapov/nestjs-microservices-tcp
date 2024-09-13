@@ -1,6 +1,6 @@
 import { DefaultMigration } from './default.migration';
-import timestampColumns from './timestamp.columns';
+import { TimestampColumns } from './default.columns';
 
 export class TimestampMigration extends DefaultMigration {
-  public defaultColumns = timestampColumns;
+  public defaultColumns = TimestampColumns;
 }
