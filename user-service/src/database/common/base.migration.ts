@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { TableForeignKeyOptions } from 'typeorm/schema-builder/options/TableForeignKeyOptions';
 import { TableIndexOptions } from 'typeorm/schema-builder/options/TableIndexOptions';
@@ -9,38 +10,32 @@ import {
   dropIndex,
 } from './helper';
 
-export class BaseMigration implements MigrationInterface {
+export abstract class BaseMigration implements MigrationInterface {
   public tableName = '';
   public foreignKeys: TableForeignKeyOptions[] = [];
   public indexes: TableIndexOptions[] = [];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async beforeUp(queryRunner: QueryRunner): Promise<void> {
+  public async beforeUp(_queryRunner: QueryRunner): Promise<void> {
     // TODO
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async up(queryRunner: QueryRunner): Promise<any> {
+  public async up(_queryRunner: QueryRunner): Promise<any> {
     // TODO
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async afterUp(queryRunner: QueryRunner): Promise<void> {
+  async afterUp(_queryRunner: QueryRunner): Promise<void> {
     // TODO
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async beforeDown(queryRunner: QueryRunner): Promise<void> {
+  public async beforeDown(_queryRunner: QueryRunner): Promise<void> {
     // TODO
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async down(queryRunner: QueryRunner): Promise<any> {
+  public async down(_queryRunner: QueryRunner): Promise<any> {
     // TODO
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async afterDown(queryRunner: QueryRunner): Promise<any> {
+  public async afterDown(_queryRunner: QueryRunner): Promise<any> {
     // TODO
   }
 
