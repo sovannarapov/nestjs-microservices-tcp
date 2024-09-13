@@ -10,15 +10,15 @@ import {
 export abstract class AbstractIntEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   @AutoMap()
-  id: number;
+  id!: number;
 
   @CreateDateColumn()
   @AutoMap()
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
   @AutoMap()
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @BeforeInsert()
   beforeInsert(): void {

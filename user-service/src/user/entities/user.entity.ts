@@ -5,20 +5,20 @@ import { AbstractSoftDeleteEntity } from 'src/libs/core';
 @Entity()
 export class User extends AbstractSoftDeleteEntity {
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  email: string;
+  email!: string;
 
   @Column()
-  password: string;
+  password!: string;
 
   @Column()
-  role: string;
+  role!: string;
 
   @Column()
-  status: UserStatus;
+  status!: UserStatus;
 
   @Column()
-  verifiedAt: Date;
+  verifiedAt!: Date;
 }
