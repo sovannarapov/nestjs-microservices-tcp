@@ -1,32 +1,24 @@
-import {
-  BaseEntity,
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity } from 'typeorm';
+import { UserStatus } from '../user.enum';
+import { AbstractSoftDeleteEntity } from 'src/libs/core';
 
 @Entity()
-export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ type: 'varchar' })
+export class User extends AbstractSoftDeleteEntity {
+  @Column()
   name: string;
 
-  @Column({ type: 'varchar' })
+  @Column()
   email: string;
 
-  @Column({ type: 'varchar' })
+  @Column()
   password: string;
 
-  @Column({ type: 'bigint' })
-  phone: number;
+  @Column()
+  role: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
-  created_at: Date;
+  @Column()
+  status: UserStatus;
 
-  @UpdateDateColumn({ type: 'timestamp' })
-  updated_at: Date;
+  @Column()
+  verifiedAt: Date;
 }
