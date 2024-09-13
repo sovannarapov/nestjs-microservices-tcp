@@ -4,8 +4,9 @@ import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOp
 import { BaseMigration } from './base.migration';
 
 export class DefaultMigration extends BaseMigration {
-  public columns = [];
-  public defaultColumns = [];
+  public columns: TableColumnOptions[] = [];
+
+  public defaultColumns: TableColumnOptions[] = [];
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     await this.beforeUp(queryRunner);
