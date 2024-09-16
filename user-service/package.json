@@ -23,7 +23,8 @@
     "migration:generate": "yarn typeorm migration:generate ./src/database/migrations/${0}",
     "migration:create": "yarn typeorm migration:create",
     "migration:revert": "yarn typeorm migration:revert",
-    "migration:drop": "yarn typeorm schema:drop"
+    "migration:drop": "yarn typeorm schema:drop",
+    "migration:refresh": "yarn migration:drop && yarn migration:run"
   },
   "dependencies": {
     "@automapper/classes": "^8.8.1",
