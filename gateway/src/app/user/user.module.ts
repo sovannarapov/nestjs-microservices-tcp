@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { USER_CLIENT } from './constants';
+import { USER_CLIENT } from './user.constants';
 
 @Module({
   imports: [

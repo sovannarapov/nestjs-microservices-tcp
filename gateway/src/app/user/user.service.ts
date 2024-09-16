@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dtos/requests';
 import { ClientProxy } from '@nestjs/microservices';
-import { USER_CLIENT } from './constants';
+import { USER_CLIENT } from './user.constants';
 
 @Injectable()
 export class UserService {
