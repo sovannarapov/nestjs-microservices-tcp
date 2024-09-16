@@ -1,8 +1,8 @@
 import { Column, Entity } from 'typeorm';
-import { UserStatus } from '../user.enum';
-import { AbstractSoftDeleteEntity } from 'src/libs/core';
+import { UserRole, UserStatus } from '../user.enum';
+import { AbstractSoftDeleteEntity } from '@/libs/core';
 
-@Entity()
+@Entity({ name: 'users' })
 export class User extends AbstractSoftDeleteEntity {
   @Column()
   name!: string;
@@ -14,7 +14,7 @@ export class User extends AbstractSoftDeleteEntity {
   password!: string;
 
   @Column()
-  role!: string;
+  role!: UserRole;
 
   @Column()
   status!: UserStatus;
