@@ -1,7 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { UserService } from './user.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { User } from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dtos/requests';
 
@@ -10,7 +9,9 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @MessagePattern('users.create')
-  async create(@Payload() dto: CreateUserDto): Promise<User> {
+  async create(@Payload() dto: CreateUserDto) {
+    delete dto.passwordConfirm;
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(dto.password, salt);
 
@@ -21,7 +22,7 @@ export class UserController {
   }
 
   @MessagePattern('users.findAll')
-  findAll() {
+  async findAll() {
     return this.userService.findAll();
   }
 }
