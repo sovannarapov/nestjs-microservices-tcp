@@ -1,16 +1,25 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { DataSource } from 'typeorm';
 import { addTransactionalDataSource } from 'typeorm-transactional';
 
+import configs from '@/config';
+
+import { UserModule } from './user/user.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
+      cache: true,
+      load: configs,
       isGlobal: true,
-      envFilePath: ['.env'],
+      validationOptions: {
+        allowUnknown: false,
+        abortEarly: true,
+      },
+      expandVariables: false,
     }),
     ThrottlerModule.forRoot([
       {

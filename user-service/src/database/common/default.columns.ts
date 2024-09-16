@@ -2,13 +2,13 @@ import { DataType } from './constant';
 
 const TimestampColumns = [
   {
-    name: 'created_at',
+    name: 'createdAt',
     type: DataType.DateTime,
     isNullable: true,
     isCreateDate: true,
   },
   {
-    name: 'updated_at',
+    name: 'updatedAt',
     type: DataType.DateTime,
     isUpdateDate: true,
     default: 'CURRENT_TIMESTAMP',
@@ -18,7 +18,7 @@ const TimestampColumns = [
 const TimestampSoftDeleteColumns = [
   ...TimestampColumns,
   {
-    name: 'deleted_at',
+    name: 'deletedAt',
     type: DataType.DateTime,
     isNullable: true,
   },
