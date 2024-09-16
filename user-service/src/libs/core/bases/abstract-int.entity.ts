@@ -1,33 +1,9 @@
 import { AutoMap } from '@automapper/classes';
-import {
-  BeforeInsert,
-  BeforeUpdate,
-  CreateDateColumn,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { PrimaryGeneratedColumn } from 'typeorm';
+import { AbstractBaseEntity } from './abstract-base.entity';
 
-export abstract class AbstractIntEntity {
+export abstract class AbstractIntEntity extends AbstractBaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   @AutoMap()
   id!: number;
-
-  @CreateDateColumn()
-  @AutoMap()
-  createdAt!: Date;
-
-  @UpdateDateColumn()
-  @AutoMap()
-  updatedAt!: Date;
-
-  @BeforeInsert()
-  beforeInsert(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
-  }
-
-  @BeforeUpdate()
-  beforeUpdate(): void {
-    this.updatedAt = new Date();
-  }
 }
